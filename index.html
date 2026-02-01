@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mon bot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background:#f4f4f4;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+    #box {
+      background:white;
+      width:300px;
+      padding:10px;
+      border-radius:8px;
+    }
+    #chat {
+      height:200px;
+      overflow:auto;
+      border:1px solid #ddd;
+      padding:5px;
+      margin-bottom:5px;
+    }
+    input {
+      width:70%;
+    }
+  </style>
+</head>
+<body>
 
+<div id="box">
+  <h3>🤖 Bot</h3>
+  <div id="chat"></div>
+  <input id="msg" placeholder="Écris ici">
+  <button onclick="send()">Envoyer</button>
+</div>
+
+<script>
+function send(){
+  let msg = document.getElementById("msg").value.toLowerCase();
+  let rep = "Je ne comprends pas 🤔";
+
+  if(msg.includes("bonjour")) rep = "Bonjour 👋";
+  else if(msg.includes("aide")) rep = "Je suis là pour t’aider 🙂";
+  else if(msg.includes("merci")) rep = "Avec plaisir 😄";
+
+  document.getElementById("chat").innerHTML += "<p><b>Toi :</b> "+msg+"</p>";
+  document.getElementById("chat").innerHTML += "<p><b>Bot :</b> "+rep+"</p>";
+  document.getElementById("msg").value = "";
+}
+</script>
+
+</body>
+</html>
